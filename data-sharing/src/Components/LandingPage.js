@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./LandingPage.css";
-import CSVReader from "react-csv-reader";
+
 import img from "./img.svg";
 import Form from "./Form.js";
-// import "./form.css";
 import ShowPosts from "./ShowPosts.js";
+import "./ShowPosts.css";
 
 const LandingPage = ({ account }) => {
   return (
@@ -44,33 +44,54 @@ const LandingPage = ({ account }) => {
         </nav>
       </header>
 
-      <main className="l-main">
-        <section className="home" id="home">
-          <div className="home__container bd-grid">
-            <div className="home__img">
-              <img src={img} alt="" data-speed="-2" className="move" />
-            </div>
-
-            <div className="home__data">
-              <h1 className="home__title">
-                Incentivised <br />
-                Data Sharing <br />
-              </h1>
-              <div className="home__button">
-                <CSVReader
-                  onFileLoaded={(data, fileInfo, originalFile) =>
-                    console.dir(data.toString())
-                  }
-                />
+      <section id="contact">
+        <div class="contact-box">
+          <div class="contact-links">
+            <h2>INCENTIVISED DATA SHARING </h2>
+            <br />
+            <br />
+            
+            <div className="links">
+              <div className="link">
+                <a>
+                  <img
+                    src="https://i.postimg.cc/m2mg2Hjm/linkedin.png"
+                    alt="linkedin"
+                  />
+                </a>
               </div>
-
-              <Form />
+              <div className="link">
+                <a>
+                  <img
+                    src="https://i.postimg.cc/YCV2QBJg/github.png"
+                    alt="github"
+                  />
+                </a>
+              </div>
+              <div className="link">
+                <a>
+                  <img
+                    src="https://i.postimg.cc/W4Znvrry/codepen.png"
+                    alt="codepen"
+                  />
+                </a>
+              </div>
+              <div className="link">
+                <a>
+                  <img
+                    src="https://i.postimg.cc/NjLfyjPB/email.png"
+                    alt="email"
+                  />
+                </a>
+              </div>
             </div>
           </div>
-          <ShowPosts />
-        </section>
-        
-      </main>
+
+          <div className="contact-form-wrapper">
+            <Form />
+          </div>
+        </div>
+      </section>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 

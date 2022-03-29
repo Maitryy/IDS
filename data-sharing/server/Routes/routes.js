@@ -4,27 +4,30 @@ const Post = require("../models/post.js");
 router.post("/posts",async (req,res) => {
     try {
         const{title, description, keyword, row, col} = req.body;
-        if(!description || !title  || !keyword)
+        var _id = new Date();
+        _id = _id.getTime();
+        if(!description || !title  || !keyword || !_id)
             return res
                 .status(400)
                 .json({errorMessage: "Please enter all details"});
 
-        const existingPost = await Post.findOne({title})
+        const existingPost = await Post.findOne({_id})
         if(existingPost)
             return res
                 .status(400)
-                .json({errorMessage: "A post with same title already exists"});    
+                .json({errorMessage: "A post with same id already exists"});    
 
         const NewPost = new Post({
             description: description,
             title: title,
             keywords: keyword,
             row: row,
-            col: col
+            col: col,
+            _id: _id
         });
         await NewPost.save();
 
-        res.send(true);
+        res.status(200).send({_id: _id});
 
     } catch (err) {
         console.error(err);

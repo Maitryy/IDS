@@ -5,8 +5,9 @@ const postSchema = new mongoose.Schema({
     description: {type: String, required:true},
     keywords: {type: String, required: true},
     row: {type: Number, required: true},
-    col: {type: Number, required: true}
-})
+    col: {type: Number, required: true},
+    _id: {type: Number, required:true},
+});
 
 
 const Post = mongoose.model("Post", postSchema);

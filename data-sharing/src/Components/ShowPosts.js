@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
-import './ShowPosts.css'
+import "./ShowPosts.css";
 const ShowPosts = () => {
   const [data, setData] = useState([]);
 
@@ -14,27 +14,51 @@ const ShowPosts = () => {
     }
     fetchData();
   }, []);
-
+  function showText(toggleText) {
+    toggleText.classList.toggle("active");
+}
   return (
-    <div>
-      {data.map((post) => {
+    <div >
+    <br/>
+    <br/>
+    <div className="one container">
+        <h1 >Posts Available..</h1>
+        </div>
+        <div className="row row-cols-3">
+      {data.map((post,i) => {
         return (
-          <div className="show">
-            <Card style={{ width: "18rem" }}>
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  <h1>{post.title}</h1>
-                  <p>{post.description} </p>
-                  <hr />
-                  <p>Keywords : {post.keyword}</p>
-                </Card.Text>
-                <Button variant="primary">Buy</Button>
-              </Card.Body>
-            </Card>
-          </div>
+
+         
+        <div className= "col-lg-4 col-md-6 col-sm-12 col-12">
+    
+           <div className="category-name"></div>
+            
+        <div className="card-category-1">
+            
+            <div className="basic-card basic-card-aqua">
+                <div className="card-content">
+                   <strong>
+                    <span className="card-title">{post.title}</span>
+                    </strong>
+                    {/* <strong> */}
+                    <p className="card-text">
+                       {post.description}
+                    </p>
+                    {/* </strong> */}
+                    
+                </div>
+
+                <div className="card-link">
+                    <a href="#" title="Read Full"><span>{post.keyword}</span></a>
+                </div>
+            </div>
+            </div>
+            </div>
+            
+          
         );
       })}
+      </div>
     </div>
   );
 };
