@@ -19,7 +19,7 @@ contract DataShare {
     mapping(address => mapping(uint256 => bool)) FilesOwned;
 
     // For finding files in a post, postid=> file
-    mapping(uint256 => File) public file;
+    mapping(uint256 => File) file;
     //For finding cost per row block
     mapping(uint256 => uint256) FileCostPerRow;
     //For finding cost per column block
@@ -46,21 +46,20 @@ contract DataShare {
         // FilesOwned[msg.sender][_Pid]=true;
     }
 
+    event purchase(string[] info);
+
     //function to buy a file
     function buyFile(
         uint256 _Pid,
         uint256 fromRow,
         uint256 toRow,
         uint256[] memory columnNo
-    ) public payable returns (string[] memory) {
+    ) public payable {
         require(msg.sender != PostOwner[_Pid], "Owner cannot buy data");
 
         uint256 rows = toRow - fromRow;
         // uint columns=columnNo.length;
-        uint256 TotalCost = rows *
-            FileCostPerRow[_Pid] +
-            columnNo.length *
-            FileCostPerColumn[_Pid];
+        uint256 TotalCost = 1000000000000000000;
         // require(
         //     msg.value>=TotalCost,
         //     "Insufficient Funds"
@@ -82,6 +81,8 @@ contract DataShare {
             }
         }
 
-        return (data);
+        emit purchase(data);
+        return;
+        // return(data);
     }
 }
