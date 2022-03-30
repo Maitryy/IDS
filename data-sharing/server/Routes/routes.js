@@ -39,6 +39,7 @@ router.post("/posts",async (req,res) => {
 router.get("/GetAllPosts", async (req,res) => {
     try {
         const getPosts = await Post.find();
+        console.log("mil gye posts ", getPosts);
         res.send(getPosts);
 
     }catch(err) {

@@ -27,9 +27,10 @@ const Form = () => {
       };
 
       const y = await axios.post("http://localhost:5000/route/posts", Post);
-      // const y = 0;
+    
       if (y) {
-        history.push("/");
+        //history.push("/");
+
       }
     } catch (err) {
       console.error(err);
