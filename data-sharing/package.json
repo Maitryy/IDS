@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.0.4",
     "axios": "^0.26.1",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",

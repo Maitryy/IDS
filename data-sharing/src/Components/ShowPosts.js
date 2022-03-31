@@ -49,26 +49,7 @@ const ShowPosts = ({ account, buyFile }) => {
                     }}> Buy Now!</button>
                   </div>
                 </div>
-<<<<<<< Updated upstream
               </div>
-=======
-
-                <div className="card-link">
-                    <a href="#" title="Read Full"><span>{post.keyword}</span></a>
-                </div>
-                
-                <div className="btn-center">
-                <form action="#">
-      <label for="rows">Rows</label>
-      const k = parseInt({post.row});
-     
-      <input type="submit" value="Submit" />
-</form>
-         
-        </div>
-            </div>
-            </div>
->>>>>>> Stashed changes
             </div>
           );
         })}
