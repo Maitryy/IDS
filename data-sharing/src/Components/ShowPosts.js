@@ -109,12 +109,14 @@ const ShowPosts = ({ account, buyFile }) => {
                         } else {
                           // buyFile(post._id, post.row, post.col);
                           for (var i = 0; i < selected_options.length; i++) {
+                      
                             var s1 = selected_options[i].text;
+                            console.log("s1", s1);
                             var x = options_idx.get(s1);
                             selected_idx.push(x);
                           }
 
-                          for (var i = 0; i < selected_idx.length; i++) {}
+                          
                         }
                       }}
                     >

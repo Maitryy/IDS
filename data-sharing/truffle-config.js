@@ -28,7 +28,7 @@ module.exports = {
             },
             network_id: 245022926,
             gas: 58789380,
-            gasPrice: 536996438001,    //make sure this gas allocation isn't over 4M, which is the max
+            gasPrice: 600000000000,    //make sure this gas allocation isn't over 4M, which is the max
           },
         development: {
             host: "127.0.0.1",
