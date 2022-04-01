@@ -6,6 +6,7 @@ router.post("/posts", async (req, res) => {
         const { title, description, keyword, row, col, col_title } = req.body;
         var _id = new Date();
         _id = _id.getTime();
+        
         if (!description || !title || !keyword || !_id)
             return res
                 .status(400)

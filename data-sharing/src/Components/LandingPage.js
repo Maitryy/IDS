@@ -32,6 +32,11 @@ const LandingPage = ({ account, createFile }) => {
         col_title,
       };
 
+      if (!description || !title || !keyword || !row || !col)
+      {
+        alert("enter all");
+      }
+
       const y = await axios.post("http://localhost:5000/route/posts", Post);
       var post_data = y.data;
       createFile(post_data._id, file, post_data.row, post_data.col);
@@ -126,7 +131,6 @@ const LandingPage = ({ account, createFile }) => {
                     aria-describedby="emailHelp"
                     onChange={(e) => gettitle(e.target.value)}
                     value={title}
-
                   />
                 </div>
                 <div className="form-item">
@@ -169,9 +173,7 @@ const LandingPage = ({ account, createFile }) => {
                     value={col}
                   />
                 </div>
-                <div
-                  className="home__button add-csv-button"
-                >
+                <div className="home__button add-csv-button">
                   {/* <CSVReader
                     onFileLoaded={(data, fileInfo, originalFile) => {
                       var file = data.toString();
@@ -182,16 +184,15 @@ const LandingPage = ({ account, createFile }) => {
                   <CSVReader
                     onFileLoaded={(data, fileInfo, originalFile) => {
                       var file = [];
-                      var ind=0;
-                      for(var row of data) {
-                        for(var str of row) {
+                      var ind = 0;
+                      for (var row of data) {
+                        for (var str of row) {
                           file.push(str);
                         }
                       }
                       getFile(file);
                       getcol_title(data[0].join(","));
-                    }
-                    }
+                    }}
                   />
                 </div>
                 <div className="btn-center">
@@ -201,7 +202,6 @@ const LandingPage = ({ account, createFile }) => {
                 </div>
               </form>
             </div>
-
           </div>
         </div>
       </section>

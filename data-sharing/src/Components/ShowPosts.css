@@ -1692,3 +1692,17 @@ h1:before,
 h1:after {
   background-color: #c50000;
 }
+
+th {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.clearr{
+    _zoom:1;
+}
+.clearr:after{
+    content: "";
+    clear: both;
+    display: block;
+}
