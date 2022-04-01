@@ -397,15 +397,7 @@ label, input, textarea {
   font-family: 'Poppins', sans-serif;
 }
 
-label {
-  position: absolute;
-  top: 10px;
-  left: 2%;
-  color: #999;
-  font-size: clamp(14px, 1.5vw, 18px);
-  pointer-events: none;
-  user-select: none;
-}
+
 
 input, textarea {
   width: 100%;

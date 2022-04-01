@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema({
     row: {type: Number, required: true},
     col: {type: Number, required: true},
     _id: {type: Number, required:true},
+    col_title: {type: String, required: true},
 });
 
 

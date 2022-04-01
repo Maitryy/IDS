@@ -15,6 +15,7 @@ const LandingPage = ({ account, createFile }) => {
   const [row, getrow] = useState("");
   const [col, getcol] = useState("");
   const [file, getFile] = useState("");
+  const [col_title, getcol_title] = useState("");
 
   const history = useNavigate();
 
@@ -28,6 +29,7 @@ const LandingPage = ({ account, createFile }) => {
         keyword,
         row,
         col,
+        col_title,
       };
 
       const y = await axios.post("http://localhost:5000/route/posts", Post);
@@ -170,10 +172,24 @@ const LandingPage = ({ account, createFile }) => {
                 <div
                   className="home__button add-csv-button"
                 >
-                  <CSVReader
+                  {/* <CSVReader
                     onFileLoaded={(data, fileInfo, originalFile) => {
                       var file = data.toString();
                       getFile(file.split(","));
+                    }
+                    }
+                  /> */}
+                  <CSVReader
+                    onFileLoaded={(data, fileInfo, originalFile) => {
+                      var file = [];
+                      var ind=0;
+                      for(var row of data) {
+                        for(var str of row) {
+                          file.push(str);
+                        }
+                      }
+                      getFile(file);
+                      getcol_title(data[0].join(","));
                     }
                     }
                   />
