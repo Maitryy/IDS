@@ -8,6 +8,9 @@ const postSchema = new mongoose.Schema({
     col: {type: Number, required: true},
     _id: {type: Number, required:true},
     col_title: {type: String, required: true},
+    keys: [{
+        type: String
+    }],
 });
 
 

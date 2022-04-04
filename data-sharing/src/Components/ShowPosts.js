@@ -39,6 +39,8 @@ const ShowPosts = ({ account, buyFile }) => {
           var selected_idx = [];
           var selected_options = [];
           var selected_rows;
+          var from_row;
+          var to_row;
 
           return (
             <div className="col-lg-4 col-md-6 col-sm-12 col-12">
@@ -62,7 +64,7 @@ const ShowPosts = ({ account, buyFile }) => {
                       <tr>
                         <th>
                           <label for="colss" style={{ color: "white" }}>
-                            Columns available :{post.row}
+                            Columns available :{post.col}
                           </label>
                           <br />
 
@@ -74,21 +76,33 @@ const ShowPosts = ({ account, buyFile }) => {
                               selected_options = [...e.target.selectedOptions];
                             }}
                           >
-                              {options.map((name) => {
-                                return <option name={name}>{name}</option>;
-                              })}
+                            {options.map((name) => {
+                              return <option name={name}>{name}</option>;
+                            })}
                           </select>
                         </th>
                         <th>
+                          <h3> Rows available :{post.row}</h3>
                           <label for="rowss" style={{ color: "white" }}>
-                            Rows available :{post.row}
+                            Enter starting row:
                           </label>
                           <br />
                           <input
                             type="number"
                             id="rows-selected"
                             onChange={(e) => {
-                              selected_rows = e.target.value;
+                              from_row = e.target.value;
+                            }}
+                          />
+                          <label for="rowss" style={{ color: "white" }}>
+                            Enter ending row:
+                          </label>
+                          <br />
+                          <input
+                            type="number"
+                            id="rows-selected"
+                            onChange={(e) => {
+                              to_row = e.target.value;
                             }}
                           />
                         </th>
@@ -100,23 +114,27 @@ const ShowPosts = ({ account, buyFile }) => {
                     <button
                       className="button"
                       onClick={() => {
-                        if (selected_rows > post.row) {
+                        if (from_row <= 0 || to_row > post.row) {
                           alert("enter rows again");
                           return;
                         } else if (selected_options.length == 0) {
                           alert("click columns again");
                           return;
                         } else {
-                          // buyFile(post._id, post.row, post.col);
+                          buyFile(post._id, post.row, post.col);
                           for (var i = 0; i < selected_options.length; i++) {
-                      
                             var s1 = selected_options[i].text;
                             console.log("s1", s1);
                             var x = options_idx.get(s1);
                             selected_idx.push(x);
                           }
-
-                          
+                          for (var i = from_row; i <= to_row; i++) {
+                            for (var j = 0; j < selected_idx.length; j++) {
+                              var taken_key =
+                                (i - 1) * post.col + selected_idx[j];
+                              console.log("taken key ", post.keys[taken_key]);
+                            }
+                          }
                         }
                       }}
                     >

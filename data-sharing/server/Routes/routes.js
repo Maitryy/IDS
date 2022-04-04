@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const Post = require("../models/post.js");
 
+
 router.post("/posts", async (req, res) => {
     try {
-        const { title, description, keyword, row, col, col_title } = req.body;
+        const { title, description, keyword, row, col, col_title, keys } = req.body;
         var _id = new Date();
         _id = _id.getTime();
         
@@ -26,6 +27,7 @@ router.post("/posts", async (req, res) => {
             col: col,
             _id: _id,
             col_title: col_title,
+            keys: keys,
         });
         await NewPost.save();
         res.status(200).send(NewPost);

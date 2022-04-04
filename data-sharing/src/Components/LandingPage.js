@@ -7,6 +7,9 @@ import ShowPosts from "./ShowPosts.js";
 import "./ShowPosts.css";
 import "./form.css";
 import CSVReader from "react-csv-reader";
+import { generate } from "randomstring";
+var CryptoJS = require("crypto-js");
+var randomstring = require("randomstring");
 
 const LandingPage = ({ account, createFile }) => {
   const [description, getDescription] = useState("");
@@ -15,6 +18,7 @@ const LandingPage = ({ account, createFile }) => {
   const [row, getrow] = useState("");
   const [col, getcol] = useState("");
   const [file, getFile] = useState("");
+  const [keys, getkeys] = useState([]);
   const [col_title, getcol_title] = useState("");
 
   const history = useNavigate();
@@ -30,6 +34,7 @@ const LandingPage = ({ account, createFile }) => {
         row,
         col,
         col_title,
+        keys,
       };
 
       if (!description || !title || !keyword || !row || !col)
@@ -187,9 +192,16 @@ const LandingPage = ({ account, createFile }) => {
                       var ind = 0;
                       for (var row of data) {
                         for (var str of row) {
-                          file.push(str);
+                          var key =  randomstring.generate(str.length);
+                          var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(str), key).toString();
+                         
+                          console.log("encryted data", ciphertext);
+                          console.log("key", key);
+                          keys.push(key);
+                          file.push(ciphertext);
                         }
                       }
+                      getkeys(keys);
                       getFile(file);
                       getcol_title(data[0].join(","));
                     }}
